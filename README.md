@@ -29,8 +29,7 @@ chunkedRequest({
   credentials: 'include',
   chunkParser(rawChunk) { /*...*/ },
   onChunk(err, parsedChunk) { /*...*/ },
-  onComplete(result) { /*...*/ },
-  onError(err) { /*...*/ }
+  onComplete(result) { /*...*/ }
 });
 ```
 
@@ -88,20 +87,11 @@ A function which will be invoked once when the browser has closed the connection
 
 Note that the `onChunk` option should be used to process the incoming response body.
 
-#### onError (optional)
-A function which implements the following interface:
-
-```js
-(error) => undefined
-```
-
-A function which will be invoked when the server cannot be reached. Reason might be the server is down or the host is unknown. This function is invoked with a single argument containing the error.
-
 #### transport (optional)
 A function which implements the following interface:
 
 ```js
-({ url, headers, method, body, credentials, onComplete, onRawChunk, onError }) => undefined
+({ url, headers, method, body, credentials, onComplete, onRawChunk }) => undefined
 ```
 
 The underlying function to use to make the request, see the provided implementations if you wish to provide a custom extension.
